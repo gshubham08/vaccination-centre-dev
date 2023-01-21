@@ -1,4 +1,4 @@
-package com.vacinationcentre;
+package com.vaccine.bookvaccination;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class VaccinationCentreDevApplication {
+public class BookVaccinationApplication {
 
 	@Bean
 	@LoadBalanced
@@ -18,7 +18,7 @@ public class VaccinationCentreDevApplication {
 	}
 	
 	public static void main(String[] args) {
-		SpringApplication.run(VaccinationCentreDevApplication.class, args);
+		SpringApplication.run(BookVaccinationApplication.class, args);
 	}
 
 }
