@@ -13,4 +13,9 @@ public class CitizenServiceController {
 		return "OK";
 	}
 	
+	@GetMapping("/getvalue")
+	public String test2() {
+		return "value";
+	}
+	
 }
