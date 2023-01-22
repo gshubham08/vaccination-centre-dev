@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.vaccine.citizenservice.payload.Response;
 import com.vaccine.citizenservice.service.CitizenService;
 
@@ -22,6 +23,7 @@ public class CitizenServiceImple implements CitizenService{
 	private String bookVaccination;
 	
 	@Override
+	@HystrixCommand(fallbackMethod = "callBookVaccineFallback")
 	public Map<String, Object> bookVaccine() {
 		
 		Map<String, Object> result = new HashMap<>();
@@ -40,4 +42,11 @@ public class CitizenServiceImple implements CitizenService{
 		return result;
 	}
 
+	public Map<String, Object> callBookVaccineFallback(){	
+		Map<String, Object> result = new HashMap<>();
+		result.put("status", "failed");
+		result.put("error", "vaccination-center service not available");
+		return result;
+	}
+	
 }
